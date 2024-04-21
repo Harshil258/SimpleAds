@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><!-- custom_view_layout.xml -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+            android:id="@+id/rlBanner"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/backg_corner_10"
+            android:backgroundTint="@color/white"
+            android:layout_margin="@dimen/_4sdp"
+            android:elevation="5dp"
+            android:visibility="invisible">
+
+        <RelativeLayout
+                android:id="@+id/rlLoader"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:layout_marginVertical="@dimen/_3sdp"
+                android:layout_height="match_parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieBanner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/txtAdTitle"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:adjustViewBounds="true"
+                    android:tint="@color/black"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/lottie_loading_banner"
+                    app:tint="@color/black" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtAdTitle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="Ad Loading"
+                    android:textSize="@dimen/_7sdp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+                android:id="@+id/frameBanner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+        </FrameLayout>
+    </RelativeLayout>
+</merge>

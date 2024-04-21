@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1046214819385",
+    "project_id": "simpleads-2003c",
+    "storage_bucket": "simpleads-2003c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046214819385:android:bc8540ab22bc7b8bce17e8",
+        "android_client_info": {
+          "package_name": "com.mahabharata.simpleads"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl7XgmBD5Ua_Z7pnhJGGCO8bu6lfX8ePc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
