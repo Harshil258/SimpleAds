@@ -16,6 +16,9 @@ captures/
 *.apk
 output.json
 
+com/mahabharata/simpleads/
+
+
 # IntelliJ
 *.iml
 .idea/
