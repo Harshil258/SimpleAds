@@ -4,6 +4,7 @@
 
     <RelativeLayout
             android:id="@+id/rlAd"
+        android:background="#00FFFF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_5sdp"

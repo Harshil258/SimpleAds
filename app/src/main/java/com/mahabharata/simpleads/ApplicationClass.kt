@@ -10,14 +10,12 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import androidx.lifecycle.LifecycleObserver
-import com.vanillavideoplayer.commonvanillaads.app.SimpleApplicationClass
-import com.vanillavideoplayer.commonvanillaads.app.SimpleApplicationClass.Companion.liveActivity
-import com.vanillavideoplayer.commonvanillaads.inters.SimpleCallBack
-import com.vanillavideoplayer.commonvanillaads.inters.DialogCB
-import com.vanillavideoplayer.commonvanillaads.z.SharedPrefConfig
-import com.vanillavideoplayer.commonvanillaads.z.sharedPrefConfig
+import com.googleadsdemo.SimpleAds.Application.SimpleApplicationClass
+import com.googleadsdemo.SimpleAds.Application.SimpleApplicationClass.Companion.liveActivity
+import com.googleadsdemo.SimpleAds.Interfaces.SimpleCallBack
+import com.googleadsdemo.SimpleAds.Interfaces.DialogCB
+import com.googleadsdemo.SimpleAds.Utils.sharedPrefConfig
 
 
 class ApplicationClass : Application(), Application.ActivityLifecycleCallbacks, LifecycleObserver {
@@ -31,11 +29,9 @@ class ApplicationClass : Application(), Application.ActivityLifecycleCallbacks, 
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
 
-        Log.e("dfrhsdfhsfdh", "onActivityCreated: 2")
 
-//        try {
+        try {
             if (activity is LauncherActivity) {
-                Log.e("dfrhsdfhsfdh", "startNextFlowLogic: 2")
                 simpleApplicationClass =
                     SimpleApplicationClass(this@ApplicationClass, object : SimpleCallBack {
 
@@ -48,36 +44,35 @@ class ApplicationClass : Application(), Application.ActivityLifecycleCallbacks, 
                         }
 
                         override fun isLauncherOperating(
-                            activity: Activity,
-                            doOtherStuff: Boolean
+                            activity: Activity, doOtherStuff: Boolean
                         ) {
-                            Log.e("dfrhsdfhsfdh", "startNextFlowLogic: 2  1")
 
                             if (doOtherStuff && activity is LauncherActivity) {
-                                Log.e("dfrhsdfhsfdh", "startNextFlowLogic: 2  2")
                                 SimpleApplicationClass.boolLauncherRunning = true
-                                simpleApplicationClass.fetchApiResponse()
-                                simpleApplicationClass.startTimerForForwardFlow(4000)
+                                simpleApplicationClass.fetchApiResponse(
+                                    false,
+                                    BuildConfig.BASE_URL,
+                                    BuildConfig.APPLICATION_ID,
+                                    BuildConfig.SECRET_KEY
+                                )
+                                simpleApplicationClass.startTimerForForwardFlow(6000)
                             } else if (activity is LauncherActivity) {
                                 SimpleApplicationClass.boolLauncherRunning = true
                             }
                         }
 
                         override fun onForwardAppFlow(operatingActivity: Activity) {
-                            Log.d("dfrhsdfhsfdh", "onForwardAppFlow")
-
                             startNextAppFlow(operatingActivity)
                         }
                     })
-                Log.e("dfrhsdfhsfdh", "startNextFlowLogic: 2  6")
                 simpleApplicationClass.onGlobalCreate()
-                Log.e("dfrhsdfhsfdh", "startNextFlowLogic: 2  7")
 
             }
             liveActivity = activity
             SimpleApplicationClass.simpleCallBack.isLauncherOperating(activity, true)
-//        } catch (e: Exception) {
-//        }
+        } catch (e: Exception) {
+        }
+
     }
 
     override fun onActivityStarted(activity: Activity) {}
@@ -93,7 +88,6 @@ class ApplicationClass : Application(), Application.ActivityLifecycleCallbacks, 
     override fun onActivityDestroyed(activity: Activity) {}
 
     private fun startNextAppFlow(runningActivity: Activity) {
-        Log.e("dfrhsdfhsfdh", "startNextFlowLogic: 1")
 
         try {
             val pInfo =
@@ -173,14 +167,12 @@ class ApplicationClass : Application(), Application.ActivityLifecycleCallbacks, 
         try {
             if (sharedPrefConfig.appDetails.visibleAdvertiseDialog == "1") {
                 object : CountDownTimer(
-                    sharedPrefConfig.appDetails.appDialogTime.toInt() * 1000L,
-                    2000L
+                    sharedPrefConfig.appDetails.appDialogTime.toInt() * 1000L, 2000L
                 ) {
                     override fun onTick(millisUntilFinished: Long) {}
 
                     override fun onFinish() {
-                        simpleApplicationClass!!.showAdAppDialog(
-                            runningActivity,
+                        simpleApplicationClass!!.showAdAppDialog(runningActivity,
                             sharedPrefConfig.appDetails.appDialogTitle,
                             sharedPrefConfig.appDetails.appDialogDesc,
                             "Visit",
@@ -210,8 +202,6 @@ class ApplicationClass : Application(), Application.ActivityLifecycleCallbacks, 
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
-        Log.d("dfrhsdfhsfdh", "startNextFlowLogic: ")
 
 
 

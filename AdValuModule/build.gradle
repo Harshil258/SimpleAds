@@ -61,6 +61,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
 
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
 
 
 }

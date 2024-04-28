@@ -34,18 +34,18 @@
 
 -keep public class com.google.ads.** {*;}
 -keep public class com.google.android.gms.** {*;}
--keep class com.vanillavideoplayer.commonvanillaads.model.** {*;}
--keep class com.vanillavideoplayer.commonvanillaads.model.AdDetail {
+-keep class com.googleadsdemo.SimpleAds.model.** {*;}
+-keep class com.googleadsdemo.SimpleAds.model.AdDetail {
     *;
 }
--keep class com.vanillavideoplayer.commonvanillaads.model.AdDetail {
+-keep class com.googleadsdemo.SimpleAds.model.AdDetail {
     public <fields>;
 }
 -keep class com.google.gson.** { *; }
 
 -keep class sun.misc.Unsafe { *; }
--keep class com.vanillavideoplayer.commonvanillaads.finalcls.** { *; }
--keepclassmembers class com.vanillavideoplayer.commonvanillaads.finalcls.** { *; }
+-keep class com.googleadsdemo.SimpleAds.SimpleAdClasses.** { *; }
+-keepclassmembers class com.googleadsdemo.SimpleAds.SimpleAdClasses.** { *; }
 -assumenosideeffects class android.util.Log {
     public static *** d(...);
     public static *** v(...);

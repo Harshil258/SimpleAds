@@ -3,6 +3,7 @@
     <declare-styleable name="NativeGBig">
         <attr name="useDirectNativeLoad" format="boolean" />
         <attr name="isFromRecyclerView" format="boolean" />
+        <attr name="isDarkMode" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="BigGBanner">

@@ -6,6 +6,8 @@ plugins {
 
 }
 
+
+
 android {
     namespace = "com.mahabharata.simpleads"
     compileSdk = 34
@@ -18,6 +20,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"${project.findProperty("BaseUrl") ?: ""}\"")
+        buildConfigField("String", "APP_ID", "\"${applicationId ?: ""}\"")
+        buildConfigField("String", "SECRET_KEY", "\"${project.findProperty("secretKey") ?: ""}\"")
+        android.buildFeatures.buildConfig=true
+
     }
 
     buildTypes {
